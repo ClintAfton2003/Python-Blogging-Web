@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Add Blog</title>
+        <!-- Add Bootstrap CSS -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" />
+        <!-- Add your custom styles if needed -->
+        <style>
+            body {
+                background-color: #f8f9fa;
+            }
+
+            #main-wrapper {
+                margin: 25px auto;
+            }
+
+            .wrapper {
+                background-color: #ffffff;
+                border-radius: 10px;
+                box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+                padding: 20px;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="container" id="main-wrapper">
+            <div class="wrapper style3">
+                <div class="inner">
+                    <div class="container">
+                        <h2 class="text-center mb-4">Add Blog</h2>
+                        <form action="{% url 'add_blog'%}" enctype="multipart/form-data" method="POST">
+                            {% csrf_token %}
+                            <div class="form-group">{{ form.as_p }}</div>
+                            <button type="submit" class="btn btn-primary">Add Blog</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <script>
+                {% if alert %}
+                document.location = '/blog';
+                {% endif %}
+            </script>
+        </div>
+
+        <!-- Add Bootstrap JS (Optional) -->
+        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    </body>
+</html>

@@ -1,0 +1,34 @@
+{% extends "page/base.html" %} {% load static %} {% block title %}{{ post.title }}{% endblock %} {% block content %}
+<style>
+    .resized-image {
+        width: 500px;
+        height: 350px;
+        object-fit: cover;
+        border-radius: 5px;
+    }
+</style>
+<div id="main-wrapper">
+    <div class="wrapper style3">
+        <div class="inner" style="padding-left: 16rem; padding-right: 16rem">
+            <div class="row">
+                <div class="col-12 col-12-medium">
+                    <section class="box article-list" style="padding: 0 100px">
+                        <br />
+                        <h1>{{ post.title }}</h1>
+                        <p>on {{ post.date }}</p>
+                        <span>by {{ post.author }}</span>
+                        <br />
+                        <h4>{{ post.description }}</h4>
+                        <div>
+                            <img src="{{ post.image.url }}" class="resized-image" style="margin: 0 auto" alt="{{ post.title }} image" />
+                        </div>
+                        {{ post.content | safe | linebreaks }}
+                        <br />
+                    </section>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

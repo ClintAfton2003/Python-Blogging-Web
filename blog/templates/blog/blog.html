@@ -1,0 +1,48 @@
+{% extends "page/base.html" %} {% block title %} Blog {% endblock %} {% block content %}
+<style>
+    .resized-image {
+        width: 350px;
+        height: 250px;
+        object-fit: cover;
+        border-radius: 5px;
+    }
+    .browser {
+        margin: 20px 200px;
+        padding: 5px;
+        background: white;
+    }
+    .truncated-paragraph {
+        max-height: 120px;
+        max-width: 550px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+    .truncated-title {
+        max-height: 70px;
+        max-width: 550px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+</style>
+<article class="all-browsers">
+    {% for post in Posts %}
+    <article class="browser" style="display: flex">
+        <div style="margin-right: 15px">
+            <a href="/blog/{{post.id}}">
+                <img src="{{post.image.url}}" class="resized-image" alt="" />
+            </a>
+        </div>
+        <div class="col-8">
+            <header>
+                <h2 class="truncated-title"><a href="/blog/{{post.id}}">{{post.title}}</a></h2>
+                <span class="date">{{post.date|date:"d-m-Y"}}</span>
+            </header>
+            <span>Tác giả: {{post.author}}</span>
+            <hr />
+
+            <p class="truncated-paragraph">{{post.content}}</p>
+        </div>
+    </article>
+</article>
+
+{% endfor %}{% endblock %}
